@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { Text, Alert, View, Image, KeyboardAvoidingView, StatusBar } from 'react-native';
 import Spinner from './Spinner';
-import Card from './Card';
-import CardItem from './CardItem';
-import Input from './Input';
 import NewButton from './NewButton';
-import Header from './Header';
 import NewInput from './NewInput';
 //import TestAlert from './TestAlert';
 

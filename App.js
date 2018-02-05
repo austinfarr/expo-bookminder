@@ -7,15 +7,13 @@ import {
 //import Header from './src/components/Header';
 //import BookList from './src/components/BookList';
 import firebase from 'firebase';
-import Navigation from './src/components/Navigation';
 import NewNavigation from './src/components/NewNavigation';
 import Spinner from './src/components/Spinner';
-import LoginForm from './src/components/LoginForm';
 import NewLoginForm from './src/components/NewLoginForm';
 
 export default class App extends Component {
 
-  state = { loggedIn: false, email: '' };
+  state = { loggedIn: false, email: '', isMounted: false };
 
   componentWillMount() {
       firebase.initializeApp({
@@ -29,11 +27,20 @@ export default class App extends Component {
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.setState({ loggedIn: true, email: user.email });
+          if (this.state.isMounted) {
+            this.setState({ loggedIn: true, email: user.email });
+          }
         } else {
-          this.setState({ loggedIn: false, email: '' });
+            this.setState({ loggedIn: false, email: '' });
         }
       });
+    }
+
+    componentDidMount() {
+      this.setState({ isMounted: true });
+    }
+    componentWillUnmount() {
+      this.setState({ isMounted: false });
     }
 
   render() {

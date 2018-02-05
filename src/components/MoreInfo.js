@@ -5,7 +5,7 @@ import Card from './Card';
 import CardItem from './CardItem';
 import ReturnButton from './ReturnButton';
 
-const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
+const MoreInfo = ({ record, onCheckOut, email, onReturn }) => {
   const { title, checkedOutBy } = record;
   const image = record.imageLinks.smallThumbnail.replace(/^http:\/\//i, 'https://');
   const author = record.authors[0];
@@ -25,7 +25,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
         whenClicked={() => onCheckOut(record)}
         colorButton="#0984e3"
       >
-      {'CHECK OUT'}
+      {'Check out book'}
       </ReturnButton>);
   } else if (checkedOutBy !== email) {
     action = (
@@ -37,7 +37,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
     action = (
       <View style={notAvailableViewStyle}>
         <ReturnButton colorButton="#00cec9" whenClicked={() => onReturn(record)} >
-          {'RETURN BOOK'}
+          {`Return ${title}`}
         </ReturnButton>
       </View>
       );
@@ -85,15 +85,9 @@ const styles = {
     flexWrap: 'wrap',
     fontFamily: 'Heiti SC'
   },
-  thumbnailContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10
-  },
   albumCoverStyle: {
-    height: 150,
-    width: 100,
+    height: 300,
+    width: null,
     marginLeft: 10
   },
   notAvailableStyle: {
@@ -111,10 +105,7 @@ const styles = {
   dueDateStyle: {
     paddingTop: 10,
     //textDecorationLine: 'underline'
-  },
-  backgroundStyle: {
-    //backgroundColor: '#d2dae2'
   }
 };
 
-export default BookDetail;
+export default MoreInfo;

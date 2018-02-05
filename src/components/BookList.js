@@ -105,6 +105,7 @@ state = { books: [], email: '' };
 const styles = {
   backgroundStyle: {
     flex: 1,
+    marginTop: 10
   }
 };
 

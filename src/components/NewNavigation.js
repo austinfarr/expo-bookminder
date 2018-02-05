@@ -2,6 +2,8 @@ import { DrawerNavigator } from 'react-navigation';
 import AllBooks from './AllBooks';
 import MyBooks from './MyBooks';
 import LogOut from './LogOut';
+import FeedbackForm from './FeedbackForm';
+import LibraryLayout from './LibraryLayout';
 
 const NewNavigation = DrawerNavigator({
     'All Books': {
@@ -12,10 +14,19 @@ const NewNavigation = DrawerNavigator({
       path: '/sent',
       screen: MyBooks
     },
+    Feedback: {
+      path: '/',
+      screen: FeedbackForm
+    },
+    'Library Layout': {
+      path: '/',
+      screen: LibraryLayout
+    },
     'Log Out': {
       path: '/',
       screen: LogOut
     }
+
   },
   {
     initialRouteName: 'All Books',
