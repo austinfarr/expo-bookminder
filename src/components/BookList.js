@@ -29,7 +29,6 @@ state = { books: [], email: '' };
             book.isbn = element.key;
             books.push(book);
           });
-
           this.setState({ books });
         });
       }
@@ -68,6 +67,17 @@ state = { books: [], email: '' };
     this.saveToDatabase(book);
 }
 
+  reserve = (b) => {
+    const book = b;
+    book.reservedBy = this.state.email;
+    this.saveToDatabase(book);
+  }
+
+  unreserve = (b) => {
+    const book = b;
+    book.reservedBy = '';
+    this.saveToDatabase(book);
+  }
 
   //Fetching data from the state
   renderBooks() {
@@ -85,13 +95,13 @@ state = { books: [], email: '' };
         onCheckOut={this.checkOut}
         onReturn={this.returnBook}
         email={this.state.email}
+        onReserve={this.reserve}
+        onUnreserve={this.unreserve}
       />);
   }
 
   //Render must return some JSX
   render() {
-    console.log(this.state);
-
     return (
       <View style={styles.backgroundStyle}>
         <ScrollView>

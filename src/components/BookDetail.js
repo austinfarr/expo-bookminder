@@ -5,8 +5,8 @@ import Card from './Card';
 import CardItem from './CardItem';
 import ReturnButton from './ReturnButton';
 
-const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
-  const { title, checkedOutBy } = record;
+const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserve }) => {
+  const { title, checkedOutBy, reservedBy } = record;
   const image = record.imageLinks.smallThumbnail.replace(/^http:\/\//i, 'https://');
   const author = record.authors[0];
   const {
@@ -28,11 +28,31 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
       {'CHECK OUT'}
       </ReturnButton>);
   } else if (checkedOutBy !== email) {
-    action = (
-      <ReturnButton colorButton="#808e9b">
-        {'Not Available'}
-      </ReturnButton>
-      );
+    if (reservedBy === '' || typeof (reservedBy) === 'undefined') {
+      action = (
+        <ReturnButton
+          whenClicked={() => onReserve(record)}
+          colorButton="#808e9b"
+        >
+          {'RESERVE BOOK'}
+        </ReturnButton>
+        );
+    } else if (reservedBy === email) {
+      action = (
+        <ReturnButton
+          whenClicked={() => onUnreserve(record)}
+          colorButton="#808e9b"
+        >
+          {'UNRESERVE BOOK'}
+        </ReturnButton>
+        );
+    } else {
+      action = (
+        <ReturnButton colorButton="#808e9b">
+          {'NOT AVAILABLE'}
+        </ReturnButton>
+        );
+    }
   } else {
     action = (
       <View style={notAvailableViewStyle}>
@@ -119,9 +139,6 @@ const styles = {
   dueDateStyle: {
     paddingTop: 10,
     //textDecorationLine: 'underline'
-  },
-  backgroundStyle: {
-    //backgroundColor: '#d2dae2'
   }
 };
 
