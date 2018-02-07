@@ -43,9 +43,17 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
       );
   }
   if (checkedOutBy === email) {
-      willShowDueDate = (
-        <Text style={dueDateStyle}>Due by {(new Date(record.dueDate)).toDateString()}</Text>
-      );
+      const dueDate = new Date(record.dueDate);
+      const today = new Date();
+      if (today >= dueDate) {
+        willShowDueDate = (
+          <Text style={dueDateStyle}>Past Due!</Text>
+        );
+      } else {
+        willShowDueDate = (
+          <Text style={dueDateStyle}>Due by {dueDate.toDateString()}</Text>
+        );
+      }
   } else if (checkedOutBy !== '' && typeof (checkedOutBy) !== 'undefined') {
       willShowDueDate = (
         <Text style={dueDateStyle}>Due back by {(new Date(record.dueDate)).toDateString()}</Text>

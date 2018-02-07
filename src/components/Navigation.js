@@ -2,6 +2,7 @@ import { TabNavigator } from 'react-navigation';
 import AllBooks from './AllBooks';
 import MyBooks from './MyBooks';
 import LogOut from './LogOut';
+import MenuIcon from './MenuIcon';
 
 const Navigation = TabNavigator({
     List: { screen: AllBooks },

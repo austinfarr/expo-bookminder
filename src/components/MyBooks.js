@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Button, Image } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firebase from 'firebase';
 import Header from './Header';
 import BookList from './BookList';
@@ -10,14 +9,14 @@ class MyBooks extends Component {
 
   static navigationOptions = {
     tabBarLabel: 'My Books',
-    /* drawerIcon: ({ tintColor }) => {
+    drawerIcon: () => {
       return (
         <Image
-          source={{ uri: 'https://cdn.osxdaily.com/wp-content/uploads/2010/10/giant-apple-logo-bw.png' }}
-          style={{ height: 20, width: 20, paddingRight: 0, marginRight: 0 }}
+          source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/2248-200.png' }}
+          style={{ height: 40, width: 40 }}
         />
       );
-    } */
+    }
   }
 
   state = { email: '' };

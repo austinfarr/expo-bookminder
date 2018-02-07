@@ -3,15 +3,17 @@
 //Import libraries
 import React from 'react';
 import { Text, View } from 'react-native';
+import MenuIcon from './MenuIcon';
 
 //Make the component
 //Header will display 'My Book' and 'Browse Books' etc.
 const Header = (props) => {
   const { textStyle, viewStyle } = styles;
-
   return (
     <View style={viewStyle}>
-
+    <MenuIcon
+      whenClicked={() => props.navigation.navigate('DrawerOpen')}
+    />
     <Text style={textStyle}>{props.headerText}</Text>
     </View>
   );

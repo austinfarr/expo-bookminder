@@ -9,7 +9,8 @@ const ReturnButton = ({ whenClicked, children, colorButton }) => {
       paddingHorizontal: 10,
       backgroundColor: colorButton,
       marginHorizontal: 10,
-      flex: 1
+      flex: 1,
+      borderRadius: 5
     },
     buttonStyle: {
       textAlign: 'center',
