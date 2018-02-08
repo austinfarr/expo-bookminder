@@ -32,7 +32,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserv
       action = (
         <ReturnButton
           whenClicked={() => onReserve(record)}
-          colorButton="#808e9b"
+          colorButton="#ff7675"
         >
           {'RESERVE BOOK'}
         </ReturnButton>
@@ -41,7 +41,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserv
       action = (
         <ReturnButton
           whenClicked={() => onUnreserve(record)}
-          colorButton="#808e9b"
+          colorButton="#ff7675"
         >
           {'UNRESERVE BOOK'}
         </ReturnButton>

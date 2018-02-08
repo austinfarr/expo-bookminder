@@ -23,18 +23,26 @@ class NewLoginForm extends Component {
     const { email, password } = this.state;
 
     Alert.alert(
-    'No account found for email',
+    'No account found with that information',
     'Would you like to create an account with this information?',
     [
       { text: 'Yes',
       onPress: () => {
           firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(this.onLoginSuccess.bind(this));
+          .then(this.onLoginSuccess.bind(this))
+          .catch(this.onEmailUsed.bind(this));
 } },
       { text: 'No', onPress: (this.onLoginFail.bind(this)) },
     ],
     { cancelable: false }
   );
+  }
+
+  onEmailUsed() {
+    this.setState({
+      error: 'Email Already Exists',
+      loading: false,
+    });
   }
 
   onLoginFail() {
@@ -101,6 +109,7 @@ class NewLoginForm extends Component {
         />
 
         {this.renderButton()}
+        <Text style={styles.errorTextStyle}>{this.state.error}</Text>
       </KeyboardAvoidingView>
     );
   }
@@ -110,7 +119,8 @@ const styles = {
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
-    color: 'red'
+    color: '#18dcff',
+    paddingBottom: 20
   },
   containerStyle: {
     flex: 1,

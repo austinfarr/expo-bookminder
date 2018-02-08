@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { View, Button, Image } from 'react-native';
+import {
+  shareOnFacebook,
+  shareOnTwitter,
+} from 'react-native-social-share';
 import firebase from 'firebase';
 import Header from './Header';
 import BookList from './BookList';
@@ -10,9 +14,10 @@ class MyBooks extends Component {
   static navigationOptions = {
     tabBarLabel: 'My Books',
     drawerIcon: () => {
+      const uri = 'https://d30y9cdsu7xlg0.cloudfront.net/png/137857-200.png';
       return (
         <Image
-          source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/2248-200.png' }}
+          source={{ uri }}
           style={{ height: 40, width: 40 }}
         />
       );
@@ -32,14 +37,13 @@ class MyBooks extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header headerText={'My Books'} />
-        <BookList
-          userName={this.state.email}
+        <Header
+          headerText={'My Books'}
+          navigation={this.props.navigation}
         />
 
-        <Button
-          onPress={() => this.props.navigation.navigate('DrawerOpen')}
-          title="Menu"
+        <BookList
+          userName={this.state.email}
         />
       </View>
     );

@@ -2,11 +2,10 @@ import React from 'react';
 import { TextInput, View, Text, Image } from 'react-native';
 
 const Input = ({ label, value, onChangeText, placeHolder, secureTextEntry }) => {
-  const { inputStyle, labelStyle, containerStyle, imageStyle } = styles;
+  const { inputStyle, containerStyle, imageStyle } = styles;
 
   return (
     <View style={containerStyle}>
-      {/*<Text style={labelStyle}>{label}</Text>*/}
       <Image
         style={imageStyle}
         source={{ uri: label }}

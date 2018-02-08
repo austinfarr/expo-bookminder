@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Button, Image } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
 import Header from './Header';
 //import Button from './Button';
 
 class LogOut extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Library Layout'
+    tabBarLabel: 'Library Layout',
+    drawerIcon: () => {
+      const uri = 'https://d30y9cdsu7xlg0.cloudfront.net/png/137857-200.png';
+      return (
+        <Image
+          source={{ uri }}
+          style={{ height: 40, width: 40 }}
+        />
+      );
+    }
   }
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header headerText={'Library Layout'} />
+        <Header
+          headerText={'Library Layout'}
+          navigation={this.props.navigation}
+        />
         <ScrollView>
               <Image
                 style={styles.albumCoverStyle}
                 source={{ uri: 'https://www.esc.cam.ac.uk/images/library/libraryplan.jpg' }}
               />
           </ScrollView>
-          <Button
-            onPress={() => this.props.navigation.navigate('DrawerOpen')}
-            title="Menu"
-          />
       </View>
           );
   }

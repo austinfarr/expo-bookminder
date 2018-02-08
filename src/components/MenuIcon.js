@@ -14,7 +14,6 @@ const MenuIcon = ({ whenClicked }) => {
       width: 30
     },
     containerStyle: {
-      
     }
   };
   return (

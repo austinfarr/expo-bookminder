@@ -28,13 +28,6 @@ class AllBooks extends Component {
         <BookList
           userName={'*'}
         />
-        <MenuButton
-          colorButton="#FFF"
-          whenClicked={() => this.props.navigation.navigate('DrawerOpen')}
-          title="Menu"
-        >
-          Menu
-        </MenuButton>
       </View>
     );
   }

@@ -11,10 +11,14 @@ const Header = (props) => {
   const { textStyle, viewStyle } = styles;
   return (
     <View style={viewStyle}>
-    <MenuIcon
-      whenClicked={() => props.navigation.navigate('DrawerOpen')}
-    />
+      <View style={styles.leftContainer}>
+        <MenuIcon
+          whenClicked={() => props.navigation.navigate('DrawerOpen')}
+        />
+      </View>
+      <View style={styles.rightContainer}>
     <Text style={textStyle}>{props.headerText}</Text>
+    </View>
     </View>
   );
 };
@@ -23,8 +27,6 @@ const Header = (props) => {
 const styles = {
   viewStyle: {
     backgroundColor: '#E1E1E1',
-    justifyContent: 'center',
-    alignItems: 'center',
     height: 60,
     paddingTop: 15,
     shadowColor: '#000',
@@ -32,11 +34,24 @@ const styles = {
     shadowOpacity: 0.2,
     elevation: 2,
     position: 'relative',
-    flexDirection: 'row'
   },
   textStyle: {
     fontSize: 20
   },
+  leftContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingTop: 10,
+    paddingLeft: 15
+  },
+  rightContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 15
+  }
 /*
   imageStyle: {
     height: 30,
