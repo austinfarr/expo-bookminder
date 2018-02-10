@@ -4,6 +4,7 @@ import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem';
 import ReturnButton from './ReturnButton';
+import TwitterButton from './TwitterButton';
 
 const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserve }) => {
   const { title, checkedOutBy, reservedBy } = record;
@@ -71,7 +72,10 @@ const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserv
         );
       } else {
         willShowDueDate = (
-          <Text style={dueDateStyle}>Due by {dueDate.toDateString()}</Text>
+          <View>
+            <Text style={dueDateStyle}>Due by {dueDate.toDateString()}</Text>
+            <TwitterButton />
+          </View>
         );
       }
   } else if (checkedOutBy !== '' && typeof (checkedOutBy) !== 'undefined') {
