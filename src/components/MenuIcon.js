@@ -4,8 +4,8 @@ import { View, TouchableOpacity, Image } from 'react-native';
 const MenuIcon = ({ whenClicked }) => {
   const styles = {
     imageStyle: {
-      height: 30,
-      width: 35
+      height: 35,
+      width: 40
     },
     viewStyle: {
     }

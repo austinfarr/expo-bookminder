@@ -13,7 +13,7 @@ class AllBooks extends Component {
       return (
         <Image
           source={{ uri }}
-          style={{ height: 30, width: 30 }}
+          style={{ height: 35, width: 35 }}
         />
       );
     }
