@@ -6,7 +6,7 @@ import FeedbackForm from './FeedbackForm';
 import LibraryLayout from './LibraryLayout';
 
 const NewNavigation = DrawerNavigator({
-    'All Books': {
+    'Browse Books': {
       path: '/',
       screen: AllBooks
     },
@@ -29,7 +29,7 @@ const NewNavigation = DrawerNavigator({
 
   },
   {
-    initialRouteName: 'All Books',
+    initialRouteName: 'Browse Books',
     drawerPosition: 'left',
     tabBarOptions: {
       activeTintColor: '#000099',

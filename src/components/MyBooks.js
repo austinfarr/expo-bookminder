@@ -14,11 +14,10 @@ class MyBooks extends Component {
   static navigationOptions = {
     tabBarLabel: 'My Books',
     drawerIcon: () => {
-      const uri = 'https://d30y9cdsu7xlg0.cloudfront.net/png/137857-200.png';
       return (
         <Image
-          source={{ uri }}
-          style={{ height: 40, width: 40 }}
+          source={require('./Pictures/MyBooksIcon.png')}
+          style={{ height: 30, width: 30 }}
         />
       );
     }

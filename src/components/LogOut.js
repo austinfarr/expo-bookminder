@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, Image } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
 
 class LogOut extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Other Options'
+    tabBarLabel: 'Log Out',
+    drawerIcon: () => {
+      return (
+        <Image
+          source={require('./Pictures/LogOutIcon.png')}
+          style={{ height: 30, width: 30 }}
+        />
+      );
+    }
   }
   componentWillMount() {
     Alert.alert(
@@ -22,7 +30,10 @@ class LogOut extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-          <Header headerText={'Log Out'} />
+          <Header
+          headerText={'Log Out'}
+          navigation={this.props.navigation}
+          />
 
       </View>
           );

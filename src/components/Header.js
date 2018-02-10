@@ -27,7 +27,7 @@ const Header = (props) => {
 const styles = {
   viewStyle: {
     backgroundColor: '#E1E1E1',
-    height: 60,
+    height: 70,
     paddingTop: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
@@ -36,14 +36,14 @@ const styles = {
     position: 'relative',
   },
   textStyle: {
-    fontSize: 20
+    fontSize: 25
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingTop: 10,
-    paddingLeft: 15
+    paddingTop: 15,
+    marginLeft: 25
   },
   rightContainer: {
     flex: 1,
@@ -52,12 +52,6 @@ const styles = {
     alignItems: 'center',
     paddingBottom: 15
   }
-/*
-  imageStyle: {
-    height: 30,
-    width: 30,
-  }
-*/
 };
 
 //Make component available to other areas

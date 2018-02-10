@@ -4,9 +4,8 @@ import React, { Component } from 'react';
 import {
   View
 } from 'react-native';
-//import Header from './src/components/Header';
-//import BookList from './src/components/BookList';
 import firebase from 'firebase';
+import firebaseConfig from './config.json';
 import NewNavigation from './src/components/NewNavigation';
 import Spinner from './src/components/Spinner';
 import NewLoginForm from './src/components/NewLoginForm';
@@ -16,14 +15,7 @@ export default class App extends Component {
   state = { loggedIn: false, email: '', isMounted: false };
 
   componentWillMount() {
-      firebase.initializeApp({
-        apiKey: 'AIzaSyAzYM8nXEPAAtqz3I1Oj79Sq-5MDn00xe4',
-        authDomain: 'fbla-bookminder.firebaseapp.com',
-        databaseURL: 'https://fbla-bookminder.firebaseio.com',
-        projectId: 'fbla-bookminder',
-        storageBucket: 'fbla-bookminder.appspot.com',
-        messagingSenderId: '472255148702'
-      });
+      firebase.initializeApp(firebaseConfig);
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
