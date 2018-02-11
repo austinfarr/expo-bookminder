@@ -3,20 +3,16 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import {
   ScrollView,
-  View,
-  Text
+  View
 } from 'react-native';
 import BookDetail from './BookDetail';
 import SearchBar from './SearchBar';
-import ButtonWithoutMargin from './ButtonWithoutMargin';
 
-//Make components
 class BookList extends Component {
-  //Initialize state with empty array (no data)
 
   static navigationOptions = {
     tabBarLabel: 'All Books'
-}
+  }
 
 state = { books: [], email: '', search: '' };
 
@@ -35,17 +31,21 @@ state = { books: [], email: '', search: '' };
           this.setState({ books });
         });
       }
-});
+    });
+  }
+
+  onSearchChanged(search) {
+    this.setState({ search });
   }
 
   saveToDatabase(book) {
     firebase.database().ref().child('library').child(book.isbn)
     .set(book)
     .then(() => {
-        console.log(`${book.title} saved`);
+      console.log(`${book.title} saved`);
     })
     .catch((e) => {
-        console.log(`Error saving ${book.title} (${book.uuid}): ${e}`);
+      console.log(`Error saving ${book.title} (${book.uuid}): ${e}`);
     });
   }
 
@@ -68,7 +68,7 @@ state = { books: [], email: '', search: '' };
     book.dueDate = dueDate.getTime();
     book.returnedBy = '';
     this.saveToDatabase(book);
-}
+  }
 
   reserve = (b) => {
     const book = b;
@@ -82,20 +82,6 @@ state = { books: [], email: '', search: '' };
     this.saveToDatabase(book);
   }
 
-  onButtonPress() {
-    const { search } = this.state;
-  }
-
-  renderButton() {
-    return (
-      <ButtonWithoutMargin
-        whenClicked={this.onButtonPress.bind(this)}
-        value={this.state.search}
-      >
-        SEARCH
-      </ButtonWithoutMargin>
-    );
-  }
   //Fetching data from the state
   renderBooks() {
     const user = this.props.userName;
@@ -104,6 +90,11 @@ state = { books: [], email: '', search: '' };
       filtered = this.state.books;
     } else {
       filtered = this.state.books.filter(book => book.checkedOutBy === user);
+    }
+    if (this.state.search.length > 0) {
+      const search = this.state.search.toLowerCase();
+      filtered = filtered.filter(book => book.title.toLowerCase().search(search) >= 0
+    || book.authors[0].toLowerCase().search(search) >= 0);
     }
     return filtered.map(whatever =>
       <BookDetail
@@ -117,19 +108,15 @@ state = { books: [], email: '', search: '' };
       />);
   }
 
-  //Render must return some JSX
   render() {
     return (
       <View style={styles.backgroundStyle}>
         <ScrollView>
-
-        <SearchBar
-          value={this.state.search}
-          onChangeText={search => this.setState({ search })}
-          returnKeyType="go"
-        />
-        {this.renderButton()}
-        <Text>{this.state.search}</Text>
+          <SearchBar
+            value={this.state.search}
+            onChangeText={search => this.onSearchChanged(search)}
+            returnKeyType="go"
+          />
           {this.renderBooks()}
         </ScrollView>
       </View>
