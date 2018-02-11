@@ -1,21 +1,42 @@
-import { TabNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 import AllBooks from './AllBooks';
 import MyBooks from './MyBooks';
 import LogOut from './LogOut';
-import MenuIcon from './MenuIcon';
+import FeedbackForm from './FeedbackForm';
+import LibraryLayout from './LibraryLayout';
 
-const Navigation = TabNavigator({
-    List: { screen: AllBooks },
-    My: { screen: MyBooks },
-    Out: { screen: LogOut }
+const NewNavigation = DrawerNavigator({
+    'Browse Books': {
+      path: '/',
+      screen: AllBooks
+    },
+    'My Books': {
+      path: '/sent',
+      screen: MyBooks
+    },
+    Feedback: {
+      path: '/',
+      screen: FeedbackForm
+    },
+    'Library Layout': {
+      path: '/',
+      screen: LibraryLayout
+    },
+    'Log Out': {
+      path: '/',
+      screen: LogOut
+    }
+
   },
   {
-  tabBarOptions: {
-    activeTintColor: '#000099',
-    inactiveTintColor: '#7575a3',
-    labelStyle: {
-      fontSize: 18,
-      fontFamily: 'Heiti SC'
+    initialRouteName: 'Browse Books',
+    drawerPosition: 'left',
+    tabBarOptions: {
+      activeTintColor: '#000099',
+      inactiveTintColor: '#7575a3',
+      labelStyle: {
+        fontSize: 18,
+        fontFamily: 'Heiti SC'
     },
     style: {
       backgroundColor: '#d2dae2',
@@ -27,4 +48,4 @@ const Navigation = TabNavigator({
   }
 );
 
-export default Navigation;
+export default NewNavigation;

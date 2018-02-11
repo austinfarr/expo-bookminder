@@ -1,36 +1,42 @@
 import React from 'react';
-import { TextInput, View, Text, Image } from 'react-native';
+import { TextInput, View, Text, TouchableOpacity } from 'react-native';
 
-const Input = ({ label, value, onChangeText, placeHolder, secureTextEntry }) => {
-  const { inputStyle, containerStyle, imageStyle } = styles;
+const NewInput = ({ label, value, onChangeText, placeHolder, secureTextEntry, returnKeyType, keyboardType, onSubmitEditing, ref }) => {
+  const { inputStyle1, containerStyle } = styles;
 
   return (
     <View style={containerStyle}>
-      <Image
-        style={imageStyle}
-        source={{ uri: label }}
-      />
       <TextInput
+        style={inputStyle1}
+        autoCapitalize='none'
         secureTextEntry={secureTextEntry}
         placeholder={placeHolder}
         autoCorrect={false}
-        style={inputStyle}
         value={value}
         onChangeText={onChangeText}
+        returnKeyType={returnKeyType}
+        placeholderTextColor="rgba(255,255,255,0.8)"
+        keyboardType={keyboardType}
+        onSubmitEditing={onSubmitEditing}
+        //ref={ref}
       />
     </View>
   );
 };
 
 const styles = {
-  inputStyle: {
-    color: '#000',
-    paddingRight: 5,
-    paddingLeft: 5,
-    fontSize: 18,
-    lineHeight: 23,
-    flex: 2,
-    backgroundColor: 'rgba(255,255,255,0.7)'
+  inputStyle1: {
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    marginBottom: 5,
+    color: '#FFF',
+    paddingHorizontal: 10
+  },
+  inputStyle2: {
+    height: 40,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    color: '#FFF',
+    paddingHorizontal: 10
   },
   labelStyle: {
     fontSize: 18,
@@ -38,15 +44,10 @@ const styles = {
     flex: 1
   },
   containerStyle: {
-    height: 40,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  imageStyle: {
-    height: 65,
-    width: 65
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10
   }
 };
 
-export default Input;
+export default NewInput;

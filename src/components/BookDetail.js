@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem';
-import ReturnButton from './ReturnButton';
+import Button from './Button';
 import TwitterButton from './TwitterButton';
 
 const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserve }) => {
@@ -22,44 +22,44 @@ const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserv
   let willShowDueDate;
   if (checkedOutBy === '' || typeof (checkedOutBy) === 'undefined') {
     action = (
-      <ReturnButton
+      <Button
         whenClicked={() => onCheckOut(record)}
         colorButton="#0984e3"
       >
       {'CHECK OUT'}
-      </ReturnButton>);
+      </Button>);
   } else if (checkedOutBy !== email) {
     if (reservedBy === '' || typeof (reservedBy) === 'undefined') {
       action = (
-        <ReturnButton
+        <Button
           whenClicked={() => onReserve(record)}
           colorButton="#ff7675"
         >
           {'RESERVE BOOK'}
-        </ReturnButton>
+        </Button>
         );
     } else if (reservedBy === email) {
       action = (
-        <ReturnButton
+        <Button
           whenClicked={() => onUnreserve(record)}
           colorButton="#ff7675"
         >
           {'UNRESERVE BOOK'}
-        </ReturnButton>
+        </Button>
         );
     } else {
       action = (
-        <ReturnButton colorButton="#808e9b">
+        <Button colorButton="#808e9b">
           {'NOT AVAILABLE'}
-        </ReturnButton>
+        </Button>
         );
     }
   } else {
     action = (
       <View style={notAvailableViewStyle}>
-        <ReturnButton colorButton="#00cec9" whenClicked={() => onReturn(record)} >
+        <Button colorButton="#00cec9" whenClicked={() => onReturn(record)} >
           {'RETURN BOOK'}
-        </ReturnButton>
+        </Button>
       </View>
       );
   }

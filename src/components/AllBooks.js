@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import Header from './Header';
 import BookList from './BookList';
-import MenuButton from './Buttons/MenuButton';
-import MenuIcon from './MenuIcon';
 
 class AllBooks extends Component {
   static navigationOptions = {

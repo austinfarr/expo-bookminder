@@ -9,9 +9,9 @@ import {
 import firebase from 'firebase';
 import firebaseConfig from './config.json';
 import registerForNotifications from './src/services/pushNotifications';
-import NewNavigation from './src/components/NewNavigation';
+import Navigation from './src/components/Navigation';
 import Spinner from './src/components/Spinner';
-import NewLoginForm from './src/components/NewLoginForm';
+import LoginForm from './src/components/LoginForm';
 
 export default class App extends Component {
 
@@ -58,12 +58,12 @@ export default class App extends Component {
     switch (this.state.loggedIn) {
       case false:
         return (
-          <NewLoginForm />
+          <LoginForm />
         );
       case true:
       return (
         <View style={{ flex: 1 }}>
-          <NewNavigation />
+          <Navigation />
         </View>
       );
       default:

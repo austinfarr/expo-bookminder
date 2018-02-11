@@ -1,40 +1,33 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ whenClicked, children }) => {
-  const { buttonStyle, textStyle } = styles;
-
+const ReturnButton = ({ whenClicked, children, colorButton }) => {
+  const styles = {
+    containerStyle: {
+      paddingVertical: 10,
+      marginVertical: 10,
+      paddingHorizontal: 10,
+      backgroundColor: colorButton,
+      marginHorizontal: 10,
+      flex: 1,
+      borderRadius: 5
+    },
+    buttonStyle: {
+      textAlign: 'center',
+      color: '#FFF',
+      fontWeight: '700'
+    }
+  };
   return (
-    <TouchableOpacity
-    style={buttonStyle}
-    onPress={whenClicked}
-    >
-      <Text style={textStyle}>
-        {children}
-      </Text>
-    </TouchableOpacity>
+    <View style={styles.containerStyle}>
+      <TouchableOpacity
+        onPress={whenClicked}
+      >
+        <Text style={styles.buttonStyle}>{children}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-const styles = {
-  buttonStyle: {
-    flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: '#007aff',
-    borderRadius: 5,
-    borderWidth: 1,
-    marginLeft: 5,
-    marginRight: 5
-  },
-  textStyle: {
-    alignSelf: 'center',
-    color: '#007aff',
-    fontSize: 16,
-    fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
-  }
-};
 
-export default Button;
+export default ReturnButton;

@@ -14,7 +14,7 @@ const Header = (props) => {
         <View style={styles.leftContainer}>
           <Image
             style={styles.imageStyle}
-            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png' }}
+            source={require('./Pictures/MenuIcon.png')}
           />
         </View>
         <View style={styles.rightContainer}>
