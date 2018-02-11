@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 const ButtonWithoutMargin = ({ whenClicked, children }) => {
   const { containerStyle } = styles;
