@@ -8,6 +8,13 @@ import Input from './Input';
 class NewLoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
 
+  /*
+    This is the Log In screen and it uses the Input components which were created
+    to take in the email and password of the user. If the user information
+    is not recognized, there will be an alert that asks if the user wants
+    to create their own account
+  */
+
   onButtonPress() {
     const { email, password } = this.state;
 

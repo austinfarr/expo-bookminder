@@ -4,6 +4,14 @@ import Header from './Header';
 import BookList from './BookList';
 
 class AllBooks extends Component {
+
+  /*
+    All Books displays every single book regardless of if they are available
+    or not. From All Books the user can check out, return, and reserve books.
+    This list can be filtered by the search bar where you can search by
+    book title or author
+  */
+
   static navigationOptions = {
     tabBarLabel: 'Browse Books',
     drawerIcon: () => {

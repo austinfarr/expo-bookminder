@@ -4,10 +4,14 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 
-//Make the component
-//Header will display 'My Book' and 'Browse Books' etc.
 const Header = (props) => {
   const { textStyle, viewStyle } = styles;
+
+  /*
+    Header is what's placed at the top of every screen that lists the current
+    page and has the menu button which opens the menu tab
+  */
+
   return (
     <View style={viewStyle}>
       <TouchableOpacity onPress={() => props.navigation.navigate('DrawerOpen')}>

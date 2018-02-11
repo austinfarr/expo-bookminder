@@ -15,9 +15,15 @@ class BookList extends Component {
     tabBarLabel: 'All Books'
   }
 
+  /*
+    This code creates the list of books by filtering the books based
+    on the search. It puts every listed book into a BookDetail components.
+    BookList also contains the logic for all the different scenarios including
+    Checking Out, Returning, and Reserving books
+  */
+
 state = { books: [], email: '', search: '' };
 
-  //Called the moment the component is called
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

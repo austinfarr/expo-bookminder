@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { View, Button, Image } from 'react-native';
-import {
-  shareOnFacebook,
-  shareOnTwitter,
-} from 'react-native-social-share';
+import { View, Image } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
 import BookList from './BookList';
 
 
 class MyBooks extends Component {
+
+  /*
+    My Books displays only the books checked out by the individual user
+    and the books can be filtered by title and author. The books can
+    be returned from this screen
+  */
 
   static navigationOptions = {
     tabBarLabel: 'My Books',

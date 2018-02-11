@@ -18,6 +18,11 @@ const BookDetail = ({ record, onCheckOut, email, onReturn, onReserve, onUnreserv
     dueDateStyle,
   } = styles;
 
+  /*
+    This code calls and styles each individual book in the list
+    and it is used in BookList to style the whole list
+  */
+
   let action = '';
   let willShowDueDate;
   if (checkedOutBy === '' || typeof (checkedOutBy) === 'undefined') {
