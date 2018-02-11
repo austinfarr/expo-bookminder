@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import {
   ScrollView,
-  View
+  View,
+  Text
 } from 'react-native';
 import BookDetail from './BookDetail';
+import SearchBar from './SearchBar';
+import ButtonWithoutMargin from './ButtonWithoutMargin';
 
 //Make components
 class BookList extends Component {
@@ -15,7 +18,7 @@ class BookList extends Component {
     tabBarLabel: 'All Books'
 }
 
-state = { books: [], email: '' };
+state = { books: [], email: '', search: '' };
 
   //Called the moment the component is called
   componentWillMount() {
@@ -79,6 +82,20 @@ state = { books: [], email: '' };
     this.saveToDatabase(book);
   }
 
+  onButtonPress() {
+    const { search } = this.state;
+  }
+
+  renderButton() {
+    return (
+      <ButtonWithoutMargin
+        whenClicked={this.onButtonPress.bind(this)}
+        value={this.state.search}
+      >
+        SEARCH
+      </ButtonWithoutMargin>
+    );
+  }
   //Fetching data from the state
   renderBooks() {
     const user = this.props.userName;
@@ -105,6 +122,14 @@ state = { books: [], email: '' };
     return (
       <View style={styles.backgroundStyle}>
         <ScrollView>
+
+        <SearchBar
+          value={this.state.search}
+          onChangeText={search => this.setState({ search })}
+          returnKeyType="go"
+        />
+        {this.renderButton()}
+        <Text>{this.state.search}</Text>
           {this.renderBooks()}
         </ScrollView>
       </View>

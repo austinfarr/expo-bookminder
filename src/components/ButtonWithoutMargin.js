@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextInput, View, Text, TouchableOpacity } from 'react-native';
 
-const NewButton = ({ whenClicked, children }) => {
-  const { inputStyle, labelStyle, containerStyle, imageStyle } = styles;
+const ButtonWithoutMargin = ({ whenClicked, children }) => {
+  const { containerStyle } = styles;
 
   return (
     <View style={containerStyle}>
@@ -22,7 +22,6 @@ const styles = {
     paddingVertical: 10,
     backgroundColor: '#2980b9',
     marginTop: 10,
-    marginBottom: 40,
     marginHorizontal: 20
   },
   buttonStyle: {
@@ -32,4 +31,4 @@ const styles = {
   }
 };
 
-export default NewButton;
+export default ButtonWithoutMargin;
