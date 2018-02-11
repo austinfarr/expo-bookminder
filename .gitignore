@@ -3,3 +3,7 @@ node_modules/**/*
 npm-debug.*
 
 config.json
+
+functions/serviceAccount.json
+
+functions/node_modules/**/*
