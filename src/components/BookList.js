@@ -67,6 +67,7 @@ state = { books: [], email: '', search: '' };
     const dueDate = new Date(firstDay.getTime() + oneWeek);
     book.dueDate = dueDate.getTime();
     book.returnedBy = '';
+    book.reservedBy = '';
     this.saveToDatabase(book);
   }
 

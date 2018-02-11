@@ -15,26 +15,23 @@ exports.onBookChange = functions.database.ref('/library/{isbn}')
       const current = event.data.val();
       const previous = event.data.previous.val();
 
-      if (current.checkedOutBy !== previous.checkedOutBy) {
-        let action = 'returned';
-        let user = previous.checkedOutBy;
-        if (current.checkedOutBy.length > 0) {
-          action = 'checked out';
-          user = current.checkedOutBy;
-        }
-        const ref = admin.database().ref('users/austin_farrnet_com');
-        ref.on('value', snapshot => {
-          ref.off();
-          const token = snapshot.val();
-          expo.sendPushNotificationAsync({
-            to: token,
-            sound: 'default',
-            body: `${current.title} ${action} by ${user}`,
-            data: { withSome: 'data' },})
-            .then( () => {return 0;})
-            .catch((err) => {console.log(err); return 1;});
-          });
-        }
+      if(current.checkedOutBy !== previous.checkedOutBy
+        && current.reservedBy !== ''
+        && current.checkedOutBy === '') {
+          const userId = current.reservedBy.replace(/\W+/g, '_');
+          const ref = admin.database().ref(`users/${userId}`);
+          ref.on('value', snapshot => {
+            ref.off();
+            const token = snapshot.val();
+            expo.sendPushNotificationAsync({
+              to: token,
+              sound: 'default',
+              body: `${current.title} is now available!`,
+              data: { available: current.title },})
+              .then( () => {return 0;})
+              .catch((err) => {console.log(err); return 1;});
+            });
       }
+    }
       return 0;
     });

@@ -39,7 +39,7 @@ export default class App extends Component {
         console.log('Received notification!!!');
         const { data: { text }, origin } = notification;
         console.log(`notification: ${JSON.stringify(notification)}`)
-        Alert.alert('New Push Message', text, [{ text: 'OK' }]);
+        Alert.alert('Your reserved book is now available!', text, [{ text: 'OK' }]);
       });
     }
 
