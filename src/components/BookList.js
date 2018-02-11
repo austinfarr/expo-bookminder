@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import {
   ScrollView,
-  View
+  View,
+  Alert
 } from 'react-native';
 import BookDetail from './BookDetail';
 import SearchBar from './SearchBar';
@@ -29,6 +30,7 @@ state = { books: [], email: '', search: '' };
             books.push(book);
           });
           this.setState({ books });
+          this.checkForOverdue();
         });
       }
     });
@@ -37,6 +39,23 @@ state = { books: [], email: '', search: '' };
   onSearchChanged(search) {
     this.setState({ search });
   }
+
+  checkForOverdue() {
+    const { email } = this.state;
+    this.state.books.forEach(book => {
+    if (book.hasBeenReminded === false || typeof (book.hasBeenReminded) === 'undefined') {
+      if (book.checkedOutBy === email) {
+          const dueDate = new Date(book.dueDate);
+          const today = new Date();
+          if (today >= dueDate) {
+              Alert.alert('', `${book.title} is overdue!`, [{ text: 'OK' }]);
+              book.hasBeenReminded = true;
+              this.saveToDatabase(book);
+          }
+        }
+      }
+    });
+}
 
   saveToDatabase(book) {
     firebase.database().ref().child('library').child(book.isbn)
@@ -55,6 +74,7 @@ state = { books: [], email: '', search: '' };
     book.checkedOutBy = '';
     const email = this.state.email;
     console.log(`${book.title} returned by ${email}`);
+    book.hasBeenReminded = false;
     this.saveToDatabase(book);
     book.dueDate = undefined;
   }

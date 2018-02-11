@@ -2,8 +2,7 @@
 
 //Import libraries
 import React from 'react';
-import { Text, View } from 'react-native';
-import MenuIcon from './MenuIcon';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 //Make the component
 //Header will display 'My Book' and 'Browse Books' etc.
@@ -11,14 +10,17 @@ const Header = (props) => {
   const { textStyle, viewStyle } = styles;
   return (
     <View style={viewStyle}>
-      <View style={styles.leftContainer}>
-        <MenuIcon
-          whenClicked={() => props.navigation.navigate('DrawerOpen')}
-        />
-      </View>
-      <View style={styles.rightContainer}>
-    <Text style={textStyle}>{props.headerText}</Text>
-    </View>
+      <TouchableOpacity onPress={() => props.navigation.navigate('DrawerOpen')}>
+        <View style={styles.leftContainer}>
+          <Image
+            style={styles.imageStyle}
+            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png' }}
+          />
+        </View>
+        <View style={styles.rightContainer}>
+        <Text style={textStyle}>{props.headerText}</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -42,7 +44,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingTop: 15,
+    marginTop: 15,
     marginLeft: 25
   },
   rightContainer: {
@@ -50,7 +52,11 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 15
+    marginTop: 20
+  },
+  imageStyle: {
+    height: 35,
+    width: 40
   }
 };
 

@@ -19,7 +19,7 @@ export default class App extends Component {
 
   componentWillMount() {
       firebase.initializeApp(firebaseConfig);
-
+      console.disableYellowBox = true;
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           if (this.state.isMounted) {

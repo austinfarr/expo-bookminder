@@ -87,7 +87,8 @@ class NewLoginForm extends Component {
             style={styles.logo}
             source={require('./Pictures/AppIcon.png')}
           />
-          <Text style={styles.titleStyle}>Keep track of all your books in one place</Text>
+          <Text style={styles.titleStyle}>BookMinder for Oak Way High School</Text>
+
         </View>
 
         <NewInput
@@ -135,13 +136,20 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  titleStyle: {
+  textStyle: {
     color: '#FFF',
     marginTop: 10,
     width: 180,
     textAlign: 'center',
     opacity: 0.9,
     fontSize: 18
+  },
+  titleStyle: {
+    color: '#FFF',
+    marginTop: 20,
+    width: 240,
+    textAlign: 'center',
+    fontSize: 20
   }
 };
 
