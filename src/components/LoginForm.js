@@ -46,7 +46,7 @@ class NewLoginForm extends Component {
 
   onEmailUsed() {
     this.setState({
-      error: 'Email Already Exists',
+      error: 'Email Already Exists \nor Password is Too Short',
       loading: false,
     });
   }
@@ -124,10 +124,10 @@ class NewLoginForm extends Component {
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 17,
     alignSelf: 'center',
     color: '#18dcff',
-    paddingBottom: 20
+    textAlign: 'center'
   },
   containerStyle: {
     flex: 1,

@@ -4,6 +4,8 @@ import { TextInput, View } from 'react-native';
 const SearchBar = ({ value, onChangeText, secureTextEntry, returnKeyType, keyboardType, onSubmitEditing, ref }) => {
   const { containerStyle } = styles;
 
+    //The search bar takes inputs that are used to filter the BookList
+
   return (
     <View style={containerStyle}>
       <TextInput
